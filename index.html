@@ -3,139 +3,241 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>Enzo 2.0 — 300 Objectifs</title>
+<title>Enzo 2.0</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#15100C;
-  --bg-grid:#1F1710;
-  --surface:#1E1710;
-  --surface-2:#241C14;
-  --surface-hover:#2A2018;
-  --ink:#EDE4D3;
-  --ink-soft:#C9BDA8;
-  --ink-muted:#8F8477;
-  --ink-faint:#5F564A;
-  --border:#332820;
-  --border-soft:#281F17;
-  --accent:#D04A3C;
-  --accent-bright:#E35A4D;
-  --accent-soft:#3A1E1A;
-  --success:#8FB87C;
+  --bg:#15100C;--bg-grid:#1F1710;--surface:#1E1710;--surface-2:#241C14;--surface-hover:#2A2018;
+  --ink:#EDE4D3;--ink-soft:#C9BDA8;--ink-muted:#8F8477;--ink-faint:#5F564A;
+  --border:#332820;--border-soft:#281F17;
+  --accent:#D04A3C;--accent-bright:#E35A4D;--accent-soft:#3A1E1A;
+  --progress:#E0A840;--success:#8FB87C;
 }
-html,body{background:var(--bg)}
-body{
-  font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
-  color:var(--ink);
-  min-height:100vh;
-  -webkit-font-smoothing:antialiased;
-  font-feature-settings:"ss01","cv11";
-  background-image:
-    linear-gradient(var(--border-soft) 1px, transparent 1px),
-    linear-gradient(90deg, var(--border-soft) 1px, transparent 1px);
-  background-size:48px 48px;
-  background-position:-1px -1px;
-}
-.header{background:rgba(21,16,12,0.92);border-bottom:1px solid var(--border);padding:24px 20px 20px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-.title-block{display:flex;align-items:baseline;gap:12px;margin-bottom:20px;flex-wrap:wrap}
-.title-main{font-family:'Instrument Serif',Georgia,serif;font-size:34px;line-height:1;letter-spacing:-0.01em;color:var(--ink);font-weight:400;font-style:italic}
-.title-main em{font-style:italic;color:var(--accent);font-weight:400}
-.title-sub{font-family:'Instrument Serif',Georgia,serif;font-size:20px;line-height:1;color:var(--ink-muted);font-weight:400;font-style:italic;padding-bottom:2px}
-.progress-hero{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:18px 20px 16px;overflow:hidden}
-.progress-numbers{font-family:'Instrument Serif',Georgia,serif;font-size:42px;line-height:1;font-weight:400;color:var(--ink);letter-spacing:-0.02em;font-variant-numeric:tabular-nums;display:flex;align-items:baseline}
-.progress-done{color:var(--accent);font-style:italic}
-.progress-sep{color:var(--ink-faint);margin:0 6px;font-style:italic}
-.progress-total{color:var(--ink-muted)}
-.progress-label{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-muted);font-weight:500;margin-top:6px;margin-bottom:14px}
-.pbar-bg{height:4px;background:var(--border);border-radius:4px;overflow:hidden}
-.pbar-fill{height:100%;background:var(--accent);border-radius:4px;transition:width .6s cubic-bezier(.4,0,.2,1);box-shadow:0 0 16px rgba(208,74,60,0.5)}
-.progress-pct{position:absolute;top:18px;right:20px;font-family:'Instrument Serif',Georgia,serif;font-size:20px;font-style:italic;color:var(--accent);font-variant-numeric:tabular-nums;letter-spacing:-0.01em}
-.controls{background:transparent;padding:16px 20px 0}
-.search{width:100%;padding:12px 16px;border:1px solid var(--border);border-radius:100px;font-size:14px;background:var(--surface);outline:none;transition:all .2s;-webkit-appearance:none;color:var(--ink);font-family:inherit;font-weight:400}
+html,body{background:var(--bg);min-height:100%}
+html{background-image:linear-gradient(var(--border-soft) 1px,transparent 1px),linear-gradient(90deg,var(--border-soft) 1px,transparent 1px);background-size:48px 48px;background-position:-1px -1px;background-attachment:fixed}
+body{font-family:'Inter',-apple-system,sans-serif;color:var(--ink);min-height:100vh;-webkit-font-smoothing:antialiased;padding-bottom:20px}
+
+/* ── HEADER ── */
+.header{background:rgba(21,16,12,0.94);border-bottom:1px solid var(--border);padding:20px 20px 16px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px)}
+.title-block{display:flex;align-items:baseline;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+.title-main{font-family:'Instrument Serif',Georgia,serif;font-size:30px;line-height:1;color:var(--ink);font-weight:400;font-style:italic}
+.title-main em{color:var(--accent)}
+.title-sub{font-family:'Instrument Serif',Georgia,serif;font-size:18px;color:var(--ink-muted);font-weight:400;font-style:italic}
+
+/* ── PROGRESS HERO ── */
+.progress-hero{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px 18px;position:relative}
+.progress-big{font-family:'Instrument Serif',Georgia,serif;font-size:38px;line-height:1;font-weight:400;display:flex;align-items:baseline;gap:0}
+.p-done{color:var(--accent);font-style:italic}
+.p-sep{color:var(--ink-faint);margin:0 5px;font-style:italic}
+.p-total{color:var(--ink-muted)}
+.p-pct{position:absolute;top:16px;right:18px;font-family:'Instrument Serif',Georgia,serif;font-size:18px;font-style:italic;color:var(--accent)}
+.p-label{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-muted);font-weight:500;margin:6px 0 12px}
+.bars-row{display:flex;flex-direction:column;gap:6px}
+.bar-item{display:flex;align-items:center;gap:8px}
+.bar-label{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;min-width:72px}
+.bar-label.en-cours{color:var(--progress)}
+.bar-label.termines{color:var(--success)}
+.bar-bg{flex:1;height:4px;background:var(--border);border-radius:4px;overflow:hidden}
+.bar-fill-cours{height:100%;background:var(--progress);border-radius:4px;transition:width .6s cubic-bezier(.4,0,.2,1);box-shadow:0 0 10px rgba(224,168,64,0.4)}
+.bar-fill-done{height:100%;background:var(--success);border-radius:4px;transition:width .6s cubic-bezier(.4,0,.2,1);box-shadow:0 0 10px rgba(143,184,124,0.4)}
+.bar-count{font-size:11px;font-weight:500;font-variant-numeric:tabular-nums;min-width:24px;text-align:right}
+.bar-count.en-cours{color:var(--progress)}
+.bar-count.termines{color:var(--success)}
+
+/* ── CONTROLS & FILTERS ── */
+.controls{padding:14px 20px 0}
+.search{width:100%;padding:11px 16px;border:1px solid var(--border);border-radius:100px;font-size:14px;background:var(--surface);outline:none;color:var(--ink);font-family:inherit;-webkit-appearance:none}
 .search::placeholder{color:var(--ink-faint);font-style:italic}
-.search:focus{border-color:var(--accent);background:var(--surface-2)}
-.filters{display:flex;gap:6px;overflow-x:auto;padding:14px 20px 12px;background:transparent;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.search:focus{border-color:var(--accent)}
+.filters{display:flex;gap:6px;overflow-x:auto;padding:12px 20px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .filters::-webkit-scrollbar{display:none}
-.pill{flex-shrink:0;padding:7px 15px;border-radius:100px;font-size:11px;font-weight:500;border:1px solid var(--border);background:transparent;cursor:pointer;white-space:nowrap;transition:all .15s;-webkit-tap-highlight-color:transparent;color:var(--ink-soft);font-family:inherit;letter-spacing:0.04em;text-transform:uppercase}
+.pill{flex-shrink:0;padding:6px 14px;border-radius:100px;font-size:11px;font-weight:500;border:1px solid var(--border);background:transparent;cursor:pointer;white-space:nowrap;color:var(--ink-soft);font-family:inherit;letter-spacing:0.04em;text-transform:uppercase;-webkit-tap-highlight-color:transparent;transition:all .15s}
 .pill:hover{border-color:var(--ink-muted);color:var(--ink)}
 .pill.active{background:var(--ink);border-color:var(--ink);color:var(--bg)}
-.stats-bar{display:flex;gap:8px;padding:4px 20px 16px;background:transparent;overflow-x:auto;scrollbar-width:none}
-.stats-bar::-webkit-scrollbar{display:none}
-.stat{flex-shrink:0;background:var(--surface);border-radius:12px;padding:10px 14px;display:flex;flex-direction:column;align-items:center;border:1px solid var(--border-soft);min-width:72px}
-.stat-n{font-family:'Instrument Serif',Georgia,serif;font-size:22px;font-weight:400;color:var(--ink);font-variant-numeric:tabular-nums;letter-spacing:-0.01em;line-height:1}
-.stat-l{font-size:9px;color:var(--ink-muted);margin-top:4px;white-space:nowrap;letter-spacing:0.1em;text-transform:uppercase;font-weight:500}
-.grid{padding:8px 20px 100px;display:flex;flex-direction:column;gap:10px;max-width:780px;margin:0 auto}
-.card{background:var(--surface);border:1px solid var(--border-soft);border-radius:14px;overflow:hidden;transition:all .2s;-webkit-tap-highlight-color:transparent}
-.card:hover{border-color:var(--border);background:var(--surface-hover)}
-.card.done{background:var(--bg-grid);opacity:.55}
-.card.done .card-text{color:var(--ink-muted)}
-.card-top{display:flex;align-items:stretch;position:relative;cursor:pointer}
-.cat-stripe{width:3px;flex-shrink:0;margin:14px 0 14px 0;border-radius:2px;opacity:0.9}
-.card-inner{flex:1;padding:16px 8px 14px 14px;min-width:0;cursor:pointer}
-.card-num{font-family:'Instrument Serif',Georgia,serif;font-size:14px;color:var(--accent);margin-bottom:6px;letter-spacing:0;font-style:italic;opacity:0.85}
-.card-text{font-size:15.5px;line-height:1.45;color:var(--ink);font-weight:400;padding-right:4px;letter-spacing:-0.005em}
-.card-meta{display:flex;align-items:center;justify-content:space-between;margin-top:12px;gap:8px}
-.cat-tag{font-size:10px;font-weight:500;padding:4px 10px;border-radius:100px;letter-spacing:0.05em;text-transform:uppercase}
-.expand-btn{font-size:10px;color:var(--ink-muted);padding:5px 11px;cursor:pointer;border:1px solid var(--border);border-radius:100px;background:transparent;-webkit-tap-highlight-color:transparent;transition:all .15s;font-family:inherit;font-weight:500;letter-spacing:0.08em;white-space:nowrap;text-transform:uppercase}
-.expand-btn:hover{border-color:var(--accent);color:var(--accent-bright)}
-.cb-wrap{padding:14px 16px 14px 8px;cursor:pointer;flex-shrink:0;display:flex;align-items:flex-start}
-.cb{width:22px;height:22px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:all .2s;background:transparent;margin-top:2px}
-.card.done .cb{background:var(--accent);border-color:var(--accent)}
-.cb svg{display:none}
-.card.done .cb svg{display:block}
-.ideas{padding:0 20px 18px 20px;border-top:1px solid var(--border-soft);background:var(--bg-grid)}
-.ideas-title{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:15px;font-weight:400;color:var(--accent);letter-spacing:0;padding:14px 0 10px}
-.idea-item{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid var(--border-soft)}
+
+/* ── GRID ── */
+.grid{padding:6px 20px 20px;display:flex;flex-direction:column;gap:8px;max-width:780px;margin:0 auto}
+
+/* ── CARD ── */
+.card{background:var(--surface);border:1px solid var(--border-soft);border-radius:14px;overflow:hidden;transition:border-color .2s;-webkit-tap-highlight-color:transparent}
+.card:hover{border-color:var(--border)}
+.card.en-cours{border-color:rgba(224,168,64,0.4);background:rgba(224,168,64,0.04)}
+.card.termine{border-color:rgba(143,184,124,0.25);background:rgba(143,184,124,0.04);opacity:.6}
+.card.termine .card-text{color:var(--ink-muted)}
+.card-top{display:flex;align-items:stretch;cursor:pointer}
+.cat-stripe{width:3px;flex-shrink:0;margin:14px 0;border-radius:2px}
+.card-inner{flex:1;padding:14px 8px 12px 14px;min-width:0}
+.card-num{font-family:'Instrument Serif',Georgia,serif;font-size:13px;color:var(--accent);margin-bottom:5px;font-style:italic;opacity:0.8}
+.card-text{font-size:15px;line-height:1.45;color:var(--ink);font-weight:400;letter-spacing:-0.005em}
+.card-meta{display:flex;align-items:center;justify-content:space-between;margin-top:10px;gap:8px;flex-wrap:wrap}
+.cat-tag{font-size:10px;font-weight:500;padding:3px 9px;border-radius:100px;letter-spacing:0.04em;text-transform:uppercase}
+.card-actions{display:flex;align-items:center;gap:6px}
+.expand-btn{font-size:10px;color:var(--ink-muted);padding:4px 10px;cursor:pointer;border:1px solid var(--border);border-radius:100px;background:transparent;font-family:inherit;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;transition:all .15s;-webkit-tap-highlight-color:transparent}
+.expand-btn:hover{border-color:var(--accent);color:var(--accent)}
+.edit-obj-btn{font-size:10px;color:var(--ink-faint);padding:4px 9px;cursor:pointer;border:1px solid var(--border-soft);border-radius:100px;background:transparent;font-family:inherit;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;transition:all .15s;-webkit-tap-highlight-color:transparent}
+.edit-obj-btn:hover{border-color:var(--ink-muted);color:var(--ink-muted)}
+
+/* ── STATUS BUTTON ── */
+.cb-wrap{padding:12px 14px 12px 6px;cursor:pointer;flex-shrink:0;display:flex;align-items:flex-start;-webkit-tap-highlight-color:transparent}
+.cb{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;transition:all .2s;margin-top:1px;font-size:11px;font-weight:600}
+.card.en-cours .cb{border-color:var(--progress);background:rgba(224,168,64,0.15);color:var(--progress)}
+.card.termine .cb{background:var(--success);border-color:var(--success);color:#fff}
+
+/* ── IDEAS ── */
+.ideas-panel{border-top:1px solid var(--border-soft);background:var(--bg-grid)}
+.ideas-title-row{display:flex;align-items:center;justify-content:space-between;padding:12px 18px 8px}
+.ideas-title{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:14px;color:var(--accent)}
+.edit-ideas-btn{font-size:10px;color:var(--ink-muted);padding:3px 9px;cursor:pointer;border:1px solid var(--border);border-radius:100px;background:transparent;font-family:inherit;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;transition:all .15s}
+.edit-ideas-btn:hover{border-color:var(--accent);color:var(--accent)}
+.ideas-list{padding:0 18px 14px}
+.idea-item{display:flex;gap:8px;padding:7px 0;border-bottom:1px solid var(--border-soft)}
 .idea-item:last-child{border-bottom:none}
-.idea-arrow{color:var(--accent);font-size:12px;flex-shrink:0;margin-top:4px;line-height:1;font-weight:500}
-.idea-text{font-size:13.5px;line-height:1.6;color:var(--ink-soft);letter-spacing:-0.005em}
+.idea-arrow{color:var(--accent);font-size:11px;flex-shrink:0;margin-top:4px}
+.idea-text{font-size:13px;line-height:1.6;color:var(--ink-soft)}
+
+/* ── EDIT PANELS ── */
+.edit-panel{border-top:1px solid var(--border-soft);background:var(--bg-grid);padding:14px 18px}
+.edit-label{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-muted);font-weight:500;margin-bottom:8px}
+.edit-textarea{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:10px;color:var(--ink);font-family:inherit;font-size:14px;line-height:1.6;padding:10px 12px;resize:vertical;outline:none;-webkit-appearance:none;min-height:80px}
+.edit-textarea:focus{border-color:var(--accent)}
+.edit-actions{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.btn-save{padding:7px 16px;background:var(--accent);color:white;border:none;border-radius:100px;font-size:12px;font-weight:500;cursor:pointer;font-family:inherit;transition:background .15s}
+.btn-save:hover{background:var(--accent-bright)}
+.btn-cancel{padding:7px 16px;background:transparent;color:var(--ink-muted);border:1px solid var(--border);border-radius:100px;font-size:12px;font-weight:500;cursor:pointer;font-family:inherit;transition:all .15s}
+.btn-cancel:hover{border-color:var(--ink-muted);color:var(--ink)}
+.btn-reset{padding:7px 14px;background:transparent;color:var(--ink-faint);border:1px solid var(--border-soft);border-radius:100px;font-size:12px;font-weight:500;cursor:pointer;font-family:inherit;margin-left:auto}
+
+/* ── EMPTY ── */
 .empty{text-align:center;padding:4rem 2rem;color:var(--ink-muted);font-size:18px;font-style:italic;font-family:'Instrument Serif',Georgia,serif}
-.fab{position:fixed;bottom:24px;right:24px;background:var(--accent);color:var(--ink);border:none;border-radius:50%;width:48px;height:48px;font-size:18px;cursor:pointer;box-shadow:0 4px 20px rgba(208,74,60,0.4);z-index:200;display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent;transition:transform .15s}
-.fab:hover{transform:translateY(-2px);background:var(--accent-bright)}
+.loading{text-align:center;padding:3rem;color:var(--ink-faint);font-size:14px}
+
+/* ── BOTTOM NAV ── */
+.bottom-nav{background:rgba(21,16,12,0.96);border-bottom:1px solid var(--border);display:flex;z-index:200;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.nav-btn{flex:1;display:flex;flex-direction:row;align-items:center;justify-content:center;padding:12px 0;cursor:pointer;border:none;background:transparent;color:var(--ink-muted);font-family:inherit;font-size:12px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;transition:color .15s;gap:6px;-webkit-tap-highlight-color:transparent;border-bottom:2px solid transparent}
+.nav-btn.active{color:var(--accent);border-bottom-color:var(--accent)}
+.nav-icon{font-size:14px;line-height:1}
+
+/* ── FAB ── */
+.fab{position:fixed;bottom:24px;right:20px;background:var(--accent);color:white;border:none;border-radius:50%;width:44px;height:44px;font-size:16px;cursor:pointer;box-shadow:0 4px 16px rgba(208,74,60,0.4);z-index:150;display:flex;align-items:center;justify-content:center;transition:transform .15s}
+.fab:hover{transform:translateY(-2px)}
+
+/* ── LIBRARY ── */
+#section-library{display:none}
+.book-card{background:var(--surface);border:1px solid var(--border-soft);border-radius:14px;overflow:hidden;transition:all .2s}
+.book-card:hover{border-color:var(--border)}
+.book-card.read{opacity:.55}
+.book-inner{display:flex;align-items:stretch}
+.book-stripe{width:3px;flex-shrink:0;margin:14px 0;border-radius:2px}
+.book-content{flex:1;padding:14px 12px 12px 14px;min-width:0}
+.book-num{font-family:'Instrument Serif',Georgia,serif;font-size:13px;color:var(--accent);margin-bottom:3px;font-style:italic;opacity:0.8}
+.book-title{font-size:15px;line-height:1.35;color:var(--ink);font-weight:500;letter-spacing:-0.01em;margin-bottom:2px}
+.book-author{font-size:12px;color:var(--ink-muted);font-style:italic;margin-bottom:8px}
+.book-desc{font-size:13px;line-height:1.6;color:var(--ink-soft);margin-bottom:12px}
+.book-footer{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.buy-btn{display:inline-flex;align-items:center;gap:5px;padding:6px 13px;background:transparent;border:1px solid var(--border);border-radius:100px;color:var(--ink-muted);font-family:inherit;font-size:11px;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;text-decoration:none;transition:all .2s}
+.buy-btn:hover{border-color:var(--accent);color:var(--accent-bright)}
+.book-cb-wrap{padding:12px 14px;cursor:pointer;flex-shrink:0;display:flex;align-items:flex-start}
+.book-cb{width:22px;height:22px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:all .2s;background:transparent;margin-top:2px}
+.book-card.read .book-cb{background:var(--success);border-color:var(--success)}
+.book-cb svg{display:none}
+.book-card.read .book-cb svg{display:block}
+.cat-header-lib{margin:12px 0 6px;display:flex;align-items:center;gap:10px}
+.cat-title-lib{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:17px;color:var(--ink-muted);font-weight:400}
+.cat-line-lib{flex:1;height:1px;background:var(--border-soft)}
+
 ul{list-style:none}
-.ideas-title-row{display:flex;align-items:center;justify-content:space-between;padding:14px 0 10px}
-.edit-btn{font-size:10px;color:var(--ink-muted);padding:4px 10px;cursor:pointer;border:1px solid var(--border);border-radius:100px;background:transparent;font-family:inherit;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;transition:all .15s}
-.edit-btn:hover{border-color:var(--accent);color:var(--accent)}
-.ideas-edit{padding:0 20px 18px 20px;border-top:1px solid var(--border-soft);background:var(--bg-grid)}
-.ideas-textarea{width:100%;min-height:140px;background:var(--surface);border:1px solid var(--border);border-radius:10px;color:var(--ink);font-family:inherit;font-size:13.5px;line-height:1.7;padding:12px 14px;resize:vertical;outline:none;margin-top:4px;-webkit-appearance:none}
-.ideas-textarea:focus{border-color:var(--accent)}
-.ideas-edit-actions{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
-.edit-save-btn{padding:8px 18px;background:var(--accent);color:white;border:none;border-radius:100px;font-size:12px;font-weight:500;cursor:pointer;font-family:inherit;letter-spacing:0.04em;transition:background .15s}
-.edit-save-btn:hover{background:var(--accent-bright)}
-.edit-cancel-btn{padding:8px 18px;background:transparent;color:var(--ink-muted);border:1px solid var(--border);border-radius:100px;font-size:12px;font-weight:500;cursor:pointer;font-family:inherit;letter-spacing:0.04em;transition:all .15s}
-.edit-cancel-btn:hover{border-color:var(--ink-muted);color:var(--ink)}
-.edit-reset-btn{padding:8px 18px;background:transparent;color:var(--ink-faint);border:1px solid var(--border-soft);border-radius:100px;font-size:12px;font-weight:500;cursor:pointer;font-family:inherit;letter-spacing:0.04em;transition:all .15s;margin-left:auto}
-.edit-reset-btn:hover{color:var(--ink-muted);border-color:var(--border)}
+.pagination{display:flex;align-items:center;justify-content:center;gap:6px;padding:16px 20px 8px;flex-wrap:wrap}
+.page-btn{width:36px;height:36px;border-radius:50%;border:1px solid var(--border);background:transparent;color:var(--ink-muted);font-family:inherit;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;-webkit-tap-highlight-color:transparent}
+.page-btn:hover{border-color:var(--ink-muted);color:var(--ink)}
+.page-btn.active{background:var(--accent);border-color:var(--accent);color:white;font-weight:600}
+.page-btn.arrow{width:auto;padding:0 12px;border-radius:100px;font-size:12px;letter-spacing:0.04em}
+.page-btn.arrow:disabled{opacity:.3;cursor:default}
+.page-info{font-size:11px;color:var(--ink-faint);letter-spacing:0.06em;text-transform:uppercase;padding:0 4px}
 </style>
 </head>
 <body>
 
+<!-- ── TOP NAV ── -->
+<nav class="bottom-nav">
+  <button class="nav-btn active" id="nav-obj" onclick="switchTab('objectives')">
+    <span class="nav-icon">◎</span>Objectifs
+  </button>
+  <button class="nav-btn" id="nav-lib" onclick="switchTab('library')">
+    <span class="nav-icon">⊟</span>Bibliothèque
+  </button>
+</nav>
+
+<!-- ── OBJECTIVES SECTION ── -->
+<div id="section-objectives">
 <div class="header">
   <div class="title-block">
     <div class="title-main">Enzo <em>2.0</em></div>
     <div class="title-sub">les 300 objectifs</div>
   </div>
   <div class="progress-hero">
-    <div class="progress-numbers">
-      <span class="progress-done" id="pcount">0</span><span class="progress-sep">/</span><span class="progress-total">300</span>
+    <div class="progress-big">
+      <span class="p-done" id="p-done">0</span>
+      <span class="p-sep">/</span>
+      <span class="p-total">300</span>
     </div>
-    <div class="progress-label" id="plabel">commencer</div>
-    <div class="pbar-bg"><div class="pbar-fill" id="pbar" style="width:0%"></div></div>
-    <div class="progress-pct" id="ppct">0%</div>
+    <div class="p-pct" id="p-pct">0%</div>
+    <div class="bars-row">
+      <div class="bar-item">
+        <span class="bar-label en-cours">En cours</span>
+        <div class="bar-bg"><div class="bar-fill-cours" id="bar-cours" style="width:0%"></div></div>
+        <span class="bar-count en-cours" id="count-cours">0</span>
+      </div>
+      <div class="bar-item">
+        <span class="bar-label termines">Terminés</span>
+        <div class="bar-bg"><div class="bar-fill-done" id="bar-done" style="width:0%"></div></div>
+        <span class="bar-count termines" id="count-done">0</span>
+      </div>
+    </div>
   </div>
 </div>
-
 <div class="controls">
-  <input class="search" type="search" placeholder="Rechercher un objectif..." id="search" autocomplete="off" />
+  <input class="search" type="search" placeholder="Rechercher un objectif..." id="search" autocomplete="off"/>
 </div>
 <div class="filters" id="filters"></div>
-<div class="grid" id="grid"></div>
-<button class="fab" onclick="scrollToTop()" title="Haut de page">↑</button>
+<div class="grid" id="grid"><div class="loading">Chargement...</div></div>
+<div class="pagination" id="pagination"></div>
+</div>
+
+<!-- ── LIBRARY SECTION ── -->
+<div id="section-library">
+<div class="header">
+  <div class="title-block">
+    <div class="title-main">Enzo <em>2.0</em></div>
+    <div class="title-sub">la bibliothèque</div>
+  </div>
+  <div class="progress-hero">
+    <div class="progress-big">
+      <span class="p-done" id="lib-done">0</span>
+      <span class="p-sep">/</span>
+      <span class="p-total" id="lib-total">12</span>
+    </div>
+    <div class="p-pct" id="lib-pct">0%</div>
+    <div class="p-label" id="lib-label">commence par L'obstacle est le chemin</div>
+    <div class="bars-row">
+      <div class="bar-item">
+        <span class="bar-label termines">Lus</span>
+        <div class="bar-bg"><div class="bar-fill-done" id="lib-bar" style="width:0%"></div></div>
+        <span class="bar-count termines" id="lib-bar-count">0</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="filters" id="lib-filters"></div>
+<div class="grid" id="lib-grid"><div class="loading">Chargement...</div></div>
+</div>
+
+<button class="fab" id="fab" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <script>
+// ── CATS & DATA ──────────────────────────────────────────────────────────
 const CATS={
   mental:{label:"Mental & Mindset",color:"#B4A9F0",bg:"#2A2240",tc:"#CFC4F7"},
   business:{label:"Contenu & Revenus",color:"#8FD0B3",bg:"#1C3429",tc:"#B8E4CB"},
@@ -146,6 +248,29 @@ const CATS={
   magnetisme:{label:"Magnétisme",color:"#E0B470",bg:"#3A2C18",tc:"#F0CC96"},
   apprentissage:{label:"Apprentissage",color:"#A8C97B",bg:"#25311A",tc:"#C9E0A4"}
 };
+
+const LIB_CATS={
+  neuro:{label:"Neurosciences",color:"#7B9EE0",bg:"rgba(123,158,224,0.12)",tc:"#9AB5E8"},
+  epi:{label:"Épigénétique",color:"#8FB87C",bg:"rgba(143,184,124,0.12)",tc:"#A5C893"},
+  psycho:{label:"Psychologie",color:"#D4A96A",bg:"rgba(212,169,106,0.12)",tc:"#DDB97A"},
+  philo:{label:"Philosophie",color:"#B07CC6",bg:"rgba(176,124,198,0.12)",tc:"#C090D6"},
+  coaching:{label:"Coaching",color:"#D04A3C",bg:"rgba(208,74,60,0.12)",tc:"#E35A4D"},
+};
+
+const BOOKS=[
+  {id:1,cat:"philo",order:1,title:"L'obstacle est le chemin",author:"Ryan Holiday",desc:"Transformer chaque difficulté en levier. Même énergie que Goggins, angle philosophique. Court et percutant.",url:"https://www.amazon.fr/s?k=L%27obstacle+est+le+chemin+Ryan+Holiday"},
+  {id:2,cat:"psycho",order:2,title:"L'homme à la recherche du sens",author:"Viktor Frankl",desc:"Pourquoi on se bat. Le sens avant les outils. Fondamental pour ta mission et pour comprendre ce qui motive vraiment les hommes.",url:"https://www.amazon.fr/s?k=L%27homme+%C3%A0+la+recherche+du+sens+Frankl"},
+  {id:3,cat:"philo",order:3,title:"Ego is the Enemy",author:"Ryan Holiday",desc:"Après Frankl, tu comprends le sens. Ryan Holiday t'apprend à ne pas te saboter. Très utile pour le pattern perfectionnisme.",url:"https://www.amazon.fr/s?k=Ego+is+the+Enemy+Ryan+Holiday+fran%C3%A7ais"},
+  {id:4,cat:"psycho",order:4,title:"Les quatre accords toltèques",author:"Don Miguel Ruiz",desc:"Identité et croyances limitantes. Simple mais profond. Prépare le terrain pour Dispenza. À relire régulièrement.",url:"https://www.amazon.fr/s?k=Les+quatre+accords+tolt%C3%A8ques+Don+Miguel+Ruiz"},
+  {id:5,cat:"neuro",order:5,title:"Rompre avec soi-même",author:"Joe Dispenza",desc:"Comment reprogrammer son cerveau pour créer une nouvelle réalité. La référence neurosciences appliquées.",url:"https://www.amazon.fr/Rompre-avec-soi-m%C3%AAme-Joe-Dispenza/dp/2813222607"},
+  {id:6,cat:"epi",order:6,title:"La biologie des croyances",author:"Bruce Lipton",desc:"Comment nos pensées influencent nos cellules au niveau biologique. Complète Dispenza sur l'aspect épigénétique.",url:"https://www.amazon.fr/s?k=La+biologie+des+croyances+Bruce+Lipton"},
+  {id:7,cat:"neuro",order:7,title:"Le cerveau du bonheur",author:"Rick Hanson",desc:"Comment installer concrètement les nouveaux circuits cérébraux. Pratique, ancré dans la science, accessible.",url:"https://www.amazon.fr/s?k=Le+cerveau+du+bonheur+Rick+Hanson"},
+  {id:8,cat:"neuro",order:8,title:"Becoming Supernatural",author:"Joe Dispenza",desc:"La suite logique. Physique quantique et pratique avancée. Pour aller plus loin dans la reprogrammation.",url:"https://www.amazon.fr/s?k=Becoming+Supernatural+Dispenza+fran%C3%A7ais"},
+  {id:9,cat:"philo",order:9,title:"Méditations",author:"Marc Aurèle",desc:"Le stoïcisme pur après avoir tout compris sur le cerveau et l'identité. Court, dense, intemporel.",url:"https://www.amazon.fr/s?k=M%C3%A9ditations+Marc+Aur%C3%A8le"},
+  {id:10,cat:"psycho",order:10,title:"Awaken the Giant Within",author:"Tony Robbins",desc:"Les six besoins humains fondamentaux. Comprendre ce qui motive vraiment les autres. Essentiel pour ta mission de coach.",url:"https://www.amazon.fr/s?k=Awaken+the+Giant+Within+Tony+Robbins+fran%C3%A7ais"},
+  {id:11,cat:"coaching",order:11,title:"The Coaching Habit",author:"Michael Bungay Stanier",desc:"Les bases du coaching bien fait. Sept questions puissantes pour accompagner vraiment. Simple, efficace, concret.",url:"https://www.amazon.fr/s?k=The+Coaching+Habit+Stanier"},
+  {id:12,cat:"coaching",order:12,title:"Co-Active Coaching",author:"Kimsey-House et al.",desc:"La référence mondiale du coaching professionnel. Tu l'ouvres quand tu es prêt à coacher vraiment.",url:"https://www.amazon.fr/s?k=Co-Active+Coaching+Kimsey-House"},
+];
 
 const OBJ=[
 // ── MENTAL & MINDSET ──────────────────────────────────────────────────────
@@ -469,215 +594,384 @@ const OBJ=[
 {id:300,cat:"mental",text:"Écrire dans 1 an ce que je dirai avoir accompli — et faire de ce texte ma feuille de route",ideas:["Exercice de prospective inverse : imagine que dans 1 an tu regardes en arrière avec fierté. Qu'as-tu accompli ?","Ce texte est à la fois un objectif et une permission : tu t'autorises à réussir en l'écrivant.","Imprime-le. Pose-le sur ton bureau. Relis-le chaque mois. Ajuste si nécessaire — mais ne l'abandonne pas."]},
 ];
 
-// ──────────────────────────────────────────────────────────────────────────
 // ── SUPABASE ──────────────────────────────────────────────────────────────
-const SB_URL = "https://brwviwxgptalyfgcbfnh.supabase.co";
-const SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJyd3Zpd3hncHRhbHlmZ2NiZm5oIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY0MTk4MzcsImV4cCI6MjA5MTk5NTgzN30.m9gg3-VtZuuOGbVhS187sI3bKweNZM7a-ekvvqXHjBU";
+const SB_URL="https://brwviwxgptalyfgcbfnh.supabase.co";
+const SB_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJyd3Zpd3hncHRhbHlmZ2NiZm5oIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY0MTk4MzcsImV4cCI6MjA5MTk5NTgzN30.m9gg3-VtZuuOGbVhS187sI3bKweNZM7a-ekvvqXHjBU";
 
-async function sbFetch(path, opts={}) {
-  const res = await fetch(SB_URL + "/rest/v1/" + path, {
-    headers: {"apikey": SB_KEY, "Authorization": "Bearer " + SB_KEY, "Content-Type": "application/json", "Prefer": "return=representation", ...opts.headers},
+async function sbFetch(path,opts={}){
+  const res=await fetch(SB_URL+"/rest/v1/"+path,{
+    headers:{"apikey":SB_KEY,"Authorization":"Bearer "+SB_KEY,"Content-Type":"application/json","Prefer":"return=representation",...opts.headers},
     ...opts
   });
-  if (!res.ok) throw new Error(await res.text());
-  const text = await res.text();
-  return text ? JSON.parse(text) : [];
+  if(!res.ok)throw new Error(await res.text());
+  const t=await res.text();return t?JSON.parse(t):[];
 }
 
-// ── APP STATE ──────────────────────────────────────────────────────────────
-let checked = new Set();
-let customIdeas = {};
-let expanded = new Set();
-let editing = null;
-let activeFilter = "all";
-let searchQ = "";
-let loaded = false;
+// ── STATE ──────────────────────────────────────────────────────────────────
+// status: 0=none, 1=en cours, 2=terminé
+let objStatus={};      // {id: 0|1|2}
+let customText={};     // {id: "custom text"}
+let customIdeas={};    // {id: [...ideas]}
+let expanded=new Set();
+let editingIdeas=null;
+let editingObj=null;
+let activeFilter="all";
+let searchQ="";
+let objLoaded=false;
+let currentPage=1;
+const PAGE_SIZE=30;
 
-async function loadFromDB() {
-  try {
-    const rows = await sbFetch("objectives?select=obj_id,checked,custom_ideas");
-    rows.forEach(r => {
-      if (r.checked) checked.add(r.obj_id);
-      if (r.custom_ideas) customIdeas[r.obj_id] = r.custom_ideas;
+let bookStatus={};     // {id: 0|1}
+let libFilter="all";
+let libLoaded=false;
+
+let activeTab="objectives";
+
+// ── PERSISTENCE ────────────────────────────────────────────────────────────
+function saveLocal(){
+  localStorage.setItem("e20_status",JSON.stringify(objStatus));
+  localStorage.setItem("e20_ideas",JSON.stringify(customIdeas));
+  localStorage.setItem("e20_text",JSON.stringify(customText));
+  localStorage.setItem("e20_books",JSON.stringify(bookStatus));
+}
+
+function loadLocal(){
+  try{
+    const s=localStorage.getItem("e20_status");if(s)objStatus=JSON.parse(s);
+    const i=localStorage.getItem("e20_ideas");if(i)customIdeas=JSON.parse(i);
+    const t=localStorage.getItem("e20_text");if(t)customText=JSON.parse(t);
+    const b=localStorage.getItem("e20_books");if(b)bookStatus=JSON.parse(b);
+  }catch(e){}
+}
+
+async function loadFromDB(){
+  loadLocal();
+  try{
+    const rows=await sbFetch("objectives?select=obj_id,status,custom_ideas,custom_text");
+    rows.forEach(r=>{
+      if(r.status)objStatus[r.obj_id]=r.status;
+      if(r.custom_ideas)customIdeas[r.obj_id]=r.custom_ideas;
+      if(r.custom_text)customText[r.obj_id]=r.custom_text;
     });
-  } catch(e) { console.warn("Offline, using localStorage", e); loadLocal(); }
-  loaded = true;
-  renderFilters();
-  renderGrid();
+  }catch(e){console.warn("Objectives offline",e);}
+  objLoaded=true;
+  renderFilters();renderGrid();
+
+  try{
+    const rows=await sbFetch("books?select=book_id,status");
+    rows.forEach(r=>{if(r.status)bookStatus[r.book_id]=r.status;});
+  }catch(e){console.warn("Books offline",e);}
+  libLoaded=true;
+  renderLibFilters();renderLib();
 }
 
-function loadLocal() {
-  const d = localStorage.getItem("enzo20_checked");
-  if (d) JSON.parse(d).forEach(id => checked.add(id));
-  const ci = localStorage.getItem("enzo20_ideas");
-  if (ci) customIdeas = JSON.parse(ci);
-}
-
-function saveLocal() {
-  localStorage.setItem("enzo20_checked", JSON.stringify([...checked]));
-  localStorage.setItem("enzo20_ideas", JSON.stringify(customIdeas));
-}
-
-async function upsertRow(id, fields) {
+async function upsertObj(id,fields){
   saveLocal();
-  try {
-    await sbFetch("objectives", {
-      method: "POST",
-      headers: {"Prefer": "resolution=merge-duplicates,return=minimal"},
-      body: JSON.stringify({obj_id: id, ...fields})
-    });
-  } catch(e) { console.warn("Sync error", e); }
+  try{
+    await sbFetch("objectives",{method:"POST",
+      headers:{"Prefer":"resolution=merge-duplicates,return=minimal"},
+      body:JSON.stringify({obj_id:id,...fields})});
+  }catch(e){console.warn("Sync err",e);}
 }
 
-// ── LOGIC ──────────────────────────────────────────────────────────────────
-function getIdeas(o) {
-  return customIdeas[o.id] || o.ideas;
+async function upsertBook(id,fields){
+  saveLocal();
+  try{
+    await sbFetch("books",{method:"POST",
+      headers:{"Prefer":"resolution=merge-duplicates,return=minimal"},
+      body:JSON.stringify({book_id:id,...fields})});
+  }catch(e){console.warn("Book sync err",e);}
 }
 
-function filtered() {
-  return OBJ.filter(o => {
-    const matchCat = activeFilter === "all" || o.cat === activeFilter;
-    const matchQ = !searchQ || o.text.toLowerCase().includes(searchQ.toLowerCase());
-    return matchCat && matchQ;
+// ── TAB SWITCH ──────────────────────────────────────────────────────────────
+function switchTab(tab){
+  activeTab=tab;
+  document.getElementById("section-objectives").style.display=tab==="objectives"?"block":"none";
+  document.getElementById("section-library").style.display=tab==="library"?"block":"none";
+  document.getElementById("nav-obj").className="nav-btn"+(tab==="objectives"?" active":"");
+  document.getElementById("nav-lib").className="nav-btn"+(tab==="library"?" active":"");
+  window.scrollTo({top:0});
+}
+
+// ── OBJECTIVES ──────────────────────────────────────────────────────────────
+function getStatus(id){return objStatus[id]||0;}
+function getText(o){return customText[o.id]||o.text;}
+function getIdeas(o){return customIdeas[o.id]||o.ideas;}
+
+function filtered(){
+  return OBJ.filter(o=>{
+    const matchCat=activeFilter==="all"||o.cat===activeFilter;
+    const matchQ=!searchQ||getText(o).toLowerCase().includes(searchQ.toLowerCase());
+    return matchCat&&matchQ;
   });
 }
 
-function renderFilters() {
-  const f = document.getElementById("filters");
-  const catCounts = {};
-  OBJ.forEach(o => { catCounts[o.cat] = (catCounts[o.cat] || 0) + 1; });
-  const pills = [
-    {id:"all", label:"Tout (" + OBJ.length + ")"},
-    ...Object.entries(CATS).map(([id, c]) => ({id, label: c.label + " (" + (catCounts[id]||0) + ")"}))
-  ];
-  f.innerHTML = pills.map(p => {
-    const active = p.id === activeFilter ? " active" : "";
-    const style = p.id !== "all" && active ? ` style="background:${CATS[p.id].color};border-color:${CATS[p.id].color}"` : "";
+function renderFilters(){
+  const f=document.getElementById("filters");
+  const cc={};OBJ.forEach(o=>{cc[o.cat]=(cc[o.cat]||0)+1;});
+  const pills=[{id:"all",label:"Tout ("+OBJ.length+")"},
+    ...Object.entries(CATS).map(([id,c])=>({id,label:c.label+" ("+(cc[id]||0)+")"}))];
+  f.innerHTML=pills.map(p=>{
+    const active=p.id===activeFilter?" active":"";
+    const style=p.id!=="all"&&active?` style="background:${CATS[p.id].color};border-color:${CATS[p.id].color};color:#15100C"`:"";
     return `<div class="pill${active}"${style} onclick="setFilter('${p.id}')">${p.label}</div>`;
   }).join("");
 }
 
-function renderGrid() {
-  const grid = document.getElementById("grid");
-  if (!loaded) { grid.innerHTML = '<div class="empty">Chargement...</div>'; return; }
-  const items = filtered();
-  if (!items.length) { grid.innerHTML = '<div class="empty">Aucun objectif trouvé</div>'; return; }
-  grid.innerHTML = items.map(o => {
-    const c = CATS[o.cat];
-    const isDone = checked.has(o.id);
-    const isExp = expanded.has(o.id);
-    const isEditing = editing === o.id;
-    const ideas = getIdeas(o);
-    const ideasHtml = isEditing
-      ? `<div class="ideas-edit">
-          <div class="ideas-title">— Modifier les idées</div>
-          <textarea id="edit-${o.id}" class="ideas-textarea">${ideas.join("\n")}</textarea>
-          <div class="ideas-edit-actions">
-            <button class="edit-save-btn" onclick="saveIdeas(${o.id})">Sauvegarder</button>
-            <button class="edit-cancel-btn" onclick="cancelEdit()">Annuler</button>
-            <button class="edit-reset-btn" onclick="resetIdeas(${o.id})">Réinitialiser</button>
+function renderGrid(){
+  const grid=document.getElementById("grid");
+  if(!objLoaded){grid.innerHTML='<div class="loading">Chargement...</div>';return;}
+  const all=filtered();
+  if(!all.length){grid.innerHTML='<div class="empty">Aucun objectif trouvé</div>';document.getElementById("pagination").innerHTML="";return;}
+  const totalPages=Math.ceil(all.length/PAGE_SIZE);
+  if(currentPage>totalPages)currentPage=1;
+  const start=(currentPage-1)*PAGE_SIZE;
+  const items=all.slice(start,start+PAGE_SIZE);
+  grid.innerHTML=items.map(o=>{
+    const c=CATS[o.cat];
+    const st=getStatus(o.id);
+    const isExp=expanded.has(o.id);
+    const isEditIdeas=editingIdeas===o.id;
+    const isEditObj=editingObj===o.id;
+    const statusClass=st===1?" en-cours":st===2?" termine":"";
+    const cbContent=st===1?"→":st===2?`<svg width="11" height="11" viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`:"";
+    const ideas=getIdeas(o);
+    const text=getText(o);
+
+    let ideasPanel="";
+    if(isExp){
+      if(isEditIdeas){
+        ideasPanel=`<div class="edit-panel">
+          <div class="edit-label">Modifier les idées (1 par ligne)</div>
+          <textarea class="edit-textarea" id="ei-${o.id}" style="min-height:120px">${ideas.join("\n")}</textarea>
+          <div class="edit-actions">
+            <button class="btn-save" onclick="saveIdeas(${o.id})">Sauvegarder</button>
+            <button class="btn-cancel" onclick="cancelEdit()">Annuler</button>
+            <button class="btn-reset" onclick="resetIdeas(${o.id})">Réinitialiser</button>
           </div>
-        </div>`
-      : `<div class="ideas">
+        </div>`;
+      } else {
+        ideasPanel=`<div class="ideas-panel">
           <div class="ideas-title-row">
             <div class="ideas-title">— Idées & pistes</div>
-            <button class="edit-btn" onclick="startEdit(${o.id})">Modifier</button>
+            <button class="edit-ideas-btn" onclick="startEditIdeas(${o.id})">Modifier</button>
           </div>
-          <ul>${ideas.map(i => `<li class="idea-item"><span class="idea-arrow">→</span><span class="idea-text">${i}</span></li>`).join("")}</ul>
+          <ul class="ideas-list">${ideas.map(i=>`<li class="idea-item"><span class="idea-arrow">→</span><span class="idea-text">${i}</span></li>`).join("")}</ul>
         </div>`;
-    return `<div class="card${isDone?" done":""}" id="card-${o.id}">
+      }
+    }
+
+    let objEditPanel="";
+    if(isEditObj){
+      objEditPanel=`<div class="edit-panel">
+        <div class="edit-label">Modifier l'objectif</div>
+        <textarea class="edit-textarea" id="eo-${o.id}">${text}</textarea>
+        <div class="edit-actions">
+          <button class="btn-save" onclick="saveObjText(${o.id})">Sauvegarder</button>
+          <button class="btn-cancel" onclick="cancelEdit()">Annuler</button>
+          <button class="btn-reset" onclick="resetObjText(${o.id})">Réinitialiser</button>
+        </div>
+      </div>`;
+    }
+
+    return `<div class="card${statusClass}" id="card-${o.id}">
       <div class="card-top">
         <div class="cat-stripe" style="background:${c.color}"></div>
-        <div class="card-inner" onclick="toggleCheck(${o.id})">
+        <div class="card-inner" onclick="cycleStatus(${o.id})">
           <div class="card-num">N°${String(o.id).padStart(3,"0")}</div>
-          <div class="card-text">${o.text}</div>
+          <div class="card-text">${text}</div>
           <div class="card-meta">
             <span class="cat-tag" style="background:${c.bg};color:${c.tc}">${c.label}</span>
-            <button class="expand-btn" onclick="event.stopPropagation();toggleExpand(${o.id})">${isExp?"Masquer —":"Idées +"}</button>
+            <div class="card-actions">
+              <button class="edit-obj-btn" onclick="event.stopPropagation();startEditObj(${o.id})">✎</button>
+              <button class="expand-btn" onclick="event.stopPropagation();toggleExpand(${o.id})">${isExp?"Masquer":"Idées +"}</button>
+            </div>
           </div>
         </div>
-        <div class="cb-wrap" onclick="toggleCheck(${o.id})">
-          <div class="cb"><svg width="11" height="11" viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="cb-wrap" onclick="cycleStatus(${o.id})">
+          <div class="cb">${cbContent}</div>
         </div>
       </div>
-      ${isExp ? ideasHtml : ""}
+      ${objEditPanel}
+      ${ideasPanel}
     </div>`;
   }).join("");
   updateProgress();
+  renderPagination(all.length);
 }
 
-async function toggleCheck(id) {
-  if (checked.has(id)) checked.delete(id); else checked.add(id);
+function renderPagination(total){
+  const pg=document.getElementById("pagination");
+  const totalPages=Math.ceil(total/PAGE_SIZE);
+  if(totalPages<=1){pg.innerHTML="";return;}
+  let html=`<button class="page-btn arrow" onclick="goPage(${currentPage-1})" ${currentPage===1?"disabled":""}>← Préc.</button>`;
+  for(let i=1;i<=totalPages;i++){
+    html+=`<button class="page-btn${i===currentPage?" active":""}" onclick="goPage(${i})">${i}</button>`;
+  }
+  html+=`<button class="page-btn arrow" onclick="goPage(${currentPage+1})" ${currentPage===totalPages?"disabled":""}>Suiv. →</button>`;
+  pg.innerHTML=html;
+}
+
+function goPage(p){
+  currentPage=p;
   renderGrid();
-  await upsertRow(id, {checked: checked.has(id)});
+  window.scrollTo({top:0,behavior:"smooth"});
 }
 
-function toggleExpand(id) {
-  if (expanded.has(id)) expanded.delete(id); else { expanded.add(id); editing = null; }
+async function cycleStatus(id){
+  const cur=getStatus(id);
+  const next=(cur+1)%3;
+  objStatus[id]=next;
+  renderGrid();
+  await upsertObj(id,{status:next});
+}
+
+function toggleExpand(id){
+  if(expanded.has(id)){expanded.delete(id);editingIdeas=null;}
+  else{expanded.add(id);}
   renderGrid();
 }
 
-function startEdit(id) {
-  editing = id;
+function startEditIdeas(id){
+  editingIdeas=id;editingObj=null;
   expanded.add(id);
   renderGrid();
-  const ta = document.getElementById("edit-" + id);
-  if (ta) { ta.focus(); ta.setSelectionRange(ta.value.length, ta.value.length); }
+  setTimeout(()=>{const ta=document.getElementById("ei-"+id);if(ta){ta.focus();ta.setSelectionRange(ta.value.length,ta.value.length);}},50);
 }
 
-async function saveIdeas(id) {
-  const ta = document.getElementById("edit-" + id);
-  if (!ta) return;
-  const lines = ta.value.split("\n").map(l => l.trim()).filter(l => l.length > 0);
-  customIdeas[id] = lines;
-  editing = null;
+function startEditObj(id){
+  editingObj=id;editingIdeas=null;
   renderGrid();
-  await upsertRow(id, {custom_ideas: JSON.stringify(lines)});
+  setTimeout(()=>{const ta=document.getElementById("eo-"+id);if(ta){ta.focus();ta.setSelectionRange(ta.value.length,ta.value.length);}},50);
 }
 
-async function resetIdeas(id) {
-  delete customIdeas[id];
-  editing = null;
+function cancelEdit(){editingIdeas=null;editingObj=null;renderGrid();}
+
+async function saveIdeas(id){
+  const ta=document.getElementById("ei-"+id);if(!ta)return;
+  const lines=ta.value.split("\n").map(l=>l.trim()).filter(l=>l.length>0);
+  customIdeas[id]=lines;editingIdeas=null;
   renderGrid();
-  await upsertRow(id, {custom_ideas: null});
+  await upsertObj(id,{custom_ideas:JSON.stringify(lines)});
 }
 
-function cancelEdit() {
-  editing = null;
+async function resetIdeas(id){
+  delete customIdeas[id];editingIdeas=null;
   renderGrid();
+  await upsertObj(id,{custom_ideas:null});
 }
 
-function setFilter(id) {
-  activeFilter = id;
-  renderFilters();
+async function saveObjText(id){
+  const ta=document.getElementById("eo-"+id);if(!ta)return;
+  const val=ta.value.trim();
+  if(val)customText[id]=val;
+  editingObj=null;
   renderGrid();
+  await upsertObj(id,{custom_text:val||null});
 }
 
-function updateProgress() {
-  const done = checked.size;
-  const total = OBJ.length;
-  const pct = Math.round(done / total * 100);
-  document.getElementById("pbar").style.width = pct + "%";
-  document.getElementById("pcount").textContent = done;
-  document.getElementById("ppct").textContent = pct + "%";
-  let label = "commencer";
-  if (pct > 0 && pct < 10) label = "premiers pas";
-  else if (pct >= 10 && pct < 25) label = "en route";
-  else if (pct >= 25 && pct < 50) label = "élan installé";
-  else if (pct >= 50 && pct < 75) label = "au-delà de la moitié";
-  else if (pct >= 75 && pct < 100) label = "dernière ligne droite";
-  else if (pct === 100) label = "Enzo 2.0 ✦";
-  document.getElementById("plabel").textContent = label;
-}
-
-function scrollToTop() { window.scrollTo({top:0, behavior:"smooth"}); }
-
-document.getElementById("search").addEventListener("input", e => {
-  searchQ = e.target.value;
+async function resetObjText(id){
+  delete customText[id];editingObj=null;
   renderGrid();
-});
+  await upsertObj(id,{custom_text:null});
+}
 
-// Init
+function setFilter(id){activeFilter=id;currentPage=1;renderFilters();renderGrid();}
+
+function updateProgress(){
+  const total=OBJ.length;
+  const cours=Object.values(objStatus).filter(s=>s===1).length;
+  const done=Object.values(objStatus).filter(s=>s===2).length;
+  const pct=Math.round(done/total*100);
+  document.getElementById("p-done").textContent=done;
+  document.getElementById("p-pct").textContent=pct+"%";
+  document.getElementById("bar-cours").style.width=Math.round(cours/total*100)+"%";
+  document.getElementById("bar-done").style.width=pct+"%";
+  document.getElementById("count-cours").textContent=cours;
+  document.getElementById("count-done").textContent=done;
+}
+
+document.getElementById("search").addEventListener("input",e=>{searchQ=e.target.value;currentPage=1;renderGrid();});
+
+// ── LIBRARY ──────────────────────────────────────────────────────────────────
+function renderLibFilters(){
+  const f=document.getElementById("lib-filters");
+  const cc={};BOOKS.forEach(b=>{cc[b.cat]=(cc[b.cat]||0)+1;});
+  const pills=[{id:"all",label:"Tout ("+BOOKS.length+")"},
+    ...Object.entries(LIB_CATS).map(([id,c])=>({id,label:c.label+" ("+(cc[id]||0)+")"}))];
+  f.innerHTML=pills.map(p=>{
+    const active=p.id===libFilter?" active":"";
+    const style=p.id!=="all"&&active?` style="background:${LIB_CATS[p.id].color};border-color:${LIB_CATS[p.id].color};color:#15100C"`:"";
+    return `<div class="pill${active}"${style} onclick="setLibFilter('${p.id}')">${p.label}</div>`;
+  }).join("");
+}
+
+function setLibFilter(id){libFilter=id;renderLibFilters();renderLib();}
+
+function renderLib(){
+  const grid=document.getElementById("lib-grid");
+  const items=libFilter==="all"?BOOKS:BOOKS.filter(b=>b.cat===libFilter);
+  const sorted=[...items].sort((a,b)=>a.order-b.order);
+  let html="";
+  if(libFilter==="all"){
+    html+=`<div class="cat-header-lib"><div class="cat-title-lib">Ordre de lecture conseillé</div><div class="cat-line-lib"></div></div>`;
+  } else {
+    const c=LIB_CATS[libFilter];
+    html+=`<div class="cat-header-lib"><div class="cat-title-lib">${c.label}</div><div class="cat-line-lib"></div></div>`;
+  }
+  sorted.forEach(b=>{
+    const c=LIB_CATS[b.cat];
+    const isRead=(bookStatus[b.id]||0)===1;
+    html+=`<div class="book-card${isRead?" read":""}" id="book-${b.id}">
+      <div class="book-inner">
+        <div class="book-stripe" style="background:${c.color}"></div>
+        <div class="book-content">
+          <div class="book-num">Lecture N°${String(b.order).padStart(2,"0")} · ${c.label}</div>
+          <div class="book-title">${b.title}</div>
+          <div class="book-author">${b.author}</div>
+          <div class="book-desc">${b.desc}</div>
+          <div class="book-footer">
+            <span class="cat-tag" style="background:${c.bg};color:${c.tc}">${c.label}</span>
+            <a class="buy-btn" href="${b.url}" target="_blank">Commander →</a>
+          </div>
+        </div>
+        <div class="book-cb-wrap" onclick="toggleBook(${b.id})">
+          <div class="book-cb"><svg width="11" height="11" viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+      </div>
+    </div>`;
+  });
+  grid.innerHTML=html;
+  updateLibProgress();
+}
+
+async function toggleBook(id){
+  const cur=bookStatus[id]||0;
+  const next=cur===1?0:1;
+  bookStatus[id]=next;
+  renderLib();
+  await upsertBook(id,{status:next});
+}
+
+function updateLibProgress(){
+  const total=BOOKS.length;
+  const done=Object.values(bookStatus).filter(s=>s===1).length;
+  const pct=Math.round(done/total*100);
+  document.getElementById("lib-done").textContent=done;
+  document.getElementById("lib-bar").style.width=pct+"%";
+  document.getElementById("lib-bar-count").textContent=done;
+  document.getElementById("lib-pct").textContent=pct+"%";
+  let label="commence par L'obstacle est le chemin";
+  if(done===1)label="premier livre lu";
+  else if(done>=2&&done<6)label="en route";
+  else if(done>=6&&done<10)label="la base se construit";
+  else if(done>=10&&done<12)label="presque là";
+  else if(done===12)label="bibliothèque complète ✦";
+  document.getElementById("lib-label").textContent=label;
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────
+switchTab("objectives");
 loadFromDB();
 </script>
 </body>
