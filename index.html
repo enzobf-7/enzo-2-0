@@ -217,7 +217,7 @@ ul{list-style:none}
     <div class="progress-big">
       <span class="p-done" id="lib-done">0</span>
       <span class="p-sep">/</span>
-      <span class="p-total" id="lib-total">12</span>
+      <span class="p-total" id="lib-total">13</span>
     </div>
     <div class="p-pct" id="lib-pct">0%</div>
     <div class="p-label" id="lib-label">commence par L'obstacle est le chemin</div>
@@ -258,18 +258,19 @@ const LIB_CATS={
 };
 
 const BOOKS=[
-  {id:1,cat:"philo",order:1,title:"L'obstacle est le chemin",author:"Ryan Holiday",desc:"Transformer chaque difficulté en levier. Même énergie que Goggins, angle philosophique. Court et percutant.",url:"https://www.amazon.fr/s?k=L%27obstacle+est+le+chemin+Ryan+Holiday"},
-  {id:2,cat:"psycho",order:2,title:"L'homme à la recherche du sens",author:"Viktor Frankl",desc:"Pourquoi on se bat. Le sens avant les outils. Fondamental pour ta mission et pour comprendre ce qui motive vraiment les hommes.",url:"https://www.amazon.fr/s?k=L%27homme+%C3%A0+la+recherche+du+sens+Frankl"},
-  {id:3,cat:"philo",order:3,title:"Ego is the Enemy",author:"Ryan Holiday",desc:"Après Frankl, tu comprends le sens. Ryan Holiday t'apprend à ne pas te saboter. Très utile pour le pattern perfectionnisme.",url:"https://www.amazon.fr/s?k=Ego+is+the+Enemy+Ryan+Holiday+fran%C3%A7ais"},
-  {id:4,cat:"psycho",order:4,title:"Les quatre accords toltèques",author:"Don Miguel Ruiz",desc:"Identité et croyances limitantes. Simple mais profond. Prépare le terrain pour Dispenza. À relire régulièrement.",url:"https://www.amazon.fr/s?k=Les+quatre+accords+tolt%C3%A8ques+Don+Miguel+Ruiz"},
-  {id:5,cat:"neuro",order:5,title:"Rompre avec soi-même",author:"Joe Dispenza",desc:"Comment reprogrammer son cerveau pour créer une nouvelle réalité. La référence neurosciences appliquées.",url:"https://www.amazon.fr/Rompre-avec-soi-m%C3%AAme-Joe-Dispenza/dp/2813222607"},
-  {id:6,cat:"epi",order:6,title:"La biologie des croyances",author:"Bruce Lipton",desc:"Comment nos pensées influencent nos cellules au niveau biologique. Complète Dispenza sur l'aspect épigénétique.",url:"https://www.amazon.fr/s?k=La+biologie+des+croyances+Bruce+Lipton"},
-  {id:7,cat:"neuro",order:7,title:"Le cerveau du bonheur",author:"Rick Hanson",desc:"Comment installer concrètement les nouveaux circuits cérébraux. Pratique, ancré dans la science, accessible.",url:"https://www.amazon.fr/s?k=Le+cerveau+du+bonheur+Rick+Hanson"},
-  {id:8,cat:"neuro",order:8,title:"Becoming Supernatural",author:"Joe Dispenza",desc:"La suite logique. Physique quantique et pratique avancée. Pour aller plus loin dans la reprogrammation.",url:"https://www.amazon.fr/s?k=Becoming+Supernatural+Dispenza+fran%C3%A7ais"},
-  {id:9,cat:"philo",order:9,title:"Méditations",author:"Marc Aurèle",desc:"Le stoïcisme pur après avoir tout compris sur le cerveau et l'identité. Court, dense, intemporel.",url:"https://www.amazon.fr/s?k=M%C3%A9ditations+Marc+Aur%C3%A8le"},
-  {id:10,cat:"psycho",order:10,title:"Awaken the Giant Within",author:"Tony Robbins",desc:"Les six besoins humains fondamentaux. Comprendre ce qui motive vraiment les autres. Essentiel pour ta mission de coach.",url:"https://www.amazon.fr/s?k=Awaken+the+Giant+Within+Tony+Robbins+fran%C3%A7ais"},
-  {id:11,cat:"coaching",order:11,title:"The Coaching Habit",author:"Michael Bungay Stanier",desc:"Les bases du coaching bien fait. Sept questions puissantes pour accompagner vraiment. Simple, efficace, concret.",url:"https://www.amazon.fr/s?k=The+Coaching+Habit+Stanier"},
-  {id:12,cat:"coaching",order:12,title:"Co-Active Coaching",author:"Kimsey-House et al.",desc:"La référence mondiale du coaching professionnel. Tu l'ouvres quand tu es prêt à coacher vraiment.",url:"https://www.amazon.fr/s?k=Co-Active+Coaching+Kimsey-House"},
+  {id:0,cat:"psycho",order:1,title:"Ne cède jamais",author:"David Goggins",desc:"Ta lecture actuelle. L'histoire brute d'un homme qui s'est reconstruit par la discipline pure. Le livre qui précède et légitime tout le reste de cette bibliothèque.",url:"https://www.amazon.fr/s?k=Ne+c%C3%A8de+jamais+Goggins"},
+  {id:1,cat:"philo",order:2,title:"L'obstacle est le chemin",author:"Ryan Holiday",desc:"Transformer chaque difficulté en levier. Même énergie que Goggins, angle philosophique. Court et percutant.",url:"https://www.amazon.fr/s?k=L%27obstacle+est+le+chemin+Ryan+Holiday"},
+  {id:2,cat:"psycho",order:3,title:"L'homme à la recherche du sens",author:"Viktor Frankl",desc:"Pourquoi on se bat. Le sens avant les outils. Fondamental pour ta mission et pour comprendre ce qui motive vraiment les hommes.",url:"https://www.amazon.fr/s?k=L%27homme+%C3%A0+la+recherche+du+sens+Frankl"},
+  {id:3,cat:"philo",order:4,title:"Ego is the Enemy",author:"Ryan Holiday",desc:"Après Frankl, tu comprends le sens. Ryan Holiday t'apprend à ne pas te saboter. Très utile pour le pattern perfectionnisme.",url:"https://www.amazon.fr/s?k=Ego+is+the+Enemy+Ryan+Holiday+fran%C3%A7ais"},
+  {id:4,cat:"psycho",order:5,title:"Les quatre accords toltèques",author:"Don Miguel Ruiz",desc:"Identité et croyances limitantes. Simple mais profond. Prépare le terrain pour Dispenza. À relire régulièrement.",url:"https://www.amazon.fr/s?k=Les+quatre+accords+tolt%C3%A8ques+Don+Miguel+Ruiz"},
+  {id:5,cat:"neuro",order:6,title:"Rompre avec soi-même",author:"Joe Dispenza",desc:"Comment reprogrammer son cerveau pour créer une nouvelle réalité. La référence neurosciences appliquées.",url:"https://www.amazon.fr/Rompre-avec-soi-m%C3%AAme-Joe-Dispenza/dp/2813222607"},
+  {id:6,cat:"epi",order:7,title:"La biologie des croyances",author:"Bruce Lipton",desc:"Comment nos pensées influencent nos cellules au niveau biologique. Complète Dispenza sur l'aspect épigénétique.",url:"https://www.amazon.fr/s?k=La+biologie+des+croyances+Bruce+Lipton"},
+  {id:7,cat:"neuro",order:8,title:"Le cerveau du bonheur",author:"Rick Hanson",desc:"Comment installer concrètement les nouveaux circuits cérébraux. Pratique, ancré dans la science, accessible.",url:"https://www.amazon.fr/s?k=Le+cerveau+du+bonheur+Rick+Hanson"},
+  {id:8,cat:"neuro",order:9,title:"Becoming Supernatural",author:"Joe Dispenza",desc:"La suite logique. Physique quantique et pratique avancée. Pour aller plus loin dans la reprogrammation.",url:"https://www.amazon.fr/s?k=Becoming+Supernatural+Dispenza+fran%C3%A7ais"},
+  {id:9,cat:"philo",order:10,title:"Méditations",author:"Marc Aurèle",desc:"Le stoïcisme pur après avoir tout compris sur le cerveau et l'identité. Court, dense, intemporel.",url:"https://www.amazon.fr/s?k=M%C3%A9ditations+Marc+Aur%C3%A8le"},
+  {id:10,cat:"psycho",order:11,title:"Awaken the Giant Within",author:"Tony Robbins",desc:"Les six besoins humains fondamentaux. Comprendre ce qui motive vraiment les autres. Essentiel pour ta mission de coach.",url:"https://www.amazon.fr/s?k=Awaken+the+Giant+Within+Tony+Robbins+fran%C3%A7ais"},
+  {id:11,cat:"coaching",order:12,title:"The Coaching Habit",author:"Michael Bungay Stanier",desc:"Les bases du coaching bien fait. Sept questions puissantes pour accompagner vraiment. Simple, efficace, concret.",url:"https://www.amazon.fr/s?k=The+Coaching+Habit+Stanier"},
+  {id:12,cat:"coaching",order:13,title:"Co-Active Coaching",author:"Kimsey-House et al.",desc:"La référence mondiale du coaching professionnel. Tu l'ouvres quand tu es prêt à coacher vraiment.",url:"https://www.amazon.fr/s?k=Co-Active+Coaching+Kimsey-House"},
 ];
 
 const OBJ=[
